@@ -10,11 +10,16 @@ namespace DecimalExtensions
     {
         static void Main(string[] args)
         {
-            // Test nr. 4.
+            decimal value = 30.675m;
+            byte digits = 4;
 
-            // decimal inputValue = 31.675m;
-            //byte significantDigits = 4;
-
+            for (int i = 0; i < 10; i++)
+            {
+                decimal roundedValue = value.RoundToSignificantDigits(digits);
+                Console.WriteLine("input value: {0} - Rounded value: {1}", value.ToString(), roundedValue.ToString());
+                value++;
+            }
+            Console.ReadKey();
         }
     }
 }

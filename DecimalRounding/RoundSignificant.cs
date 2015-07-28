@@ -4,13 +4,13 @@ namespace DecimalExtensions
 {
     public static class RoundingMethods
     {
-        public static decimal RoundToSignificantDigits(this decimal inputValue, byte significantDigits)
+        public static decimal RoundToSignificantDigits(this Decimal inputValue, byte significantDigits)
         {
             bool integer = false;
             return RoundingSignificant(inputValue, significantDigits, integer);
         }
 
-        public static decimal RoundToSignificantDigits(this decimal inputValue, byte significantDigits, bool integer)
+        public static decimal RoundToSignificantDigits(this Decimal inputValue, byte significantDigits, bool integer)
         {
             return RoundingSignificant(inputValue, significantDigits, integer);
         }
@@ -41,4 +41,5 @@ namespace DecimalExtensions
         }
         
     }
+
 }

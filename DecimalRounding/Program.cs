@@ -51,8 +51,25 @@ namespace Test
                 value++;
             }
             Console.ReadKey();
-            
-            
+
+            //for (int i = 0; i < 200; i++)
+            //{
+            //    Console.WriteLine(i.ToString() + " " + MathExt.Factorial(i).ToString());
+            //}
+            //Console.ReadKey();
+
+            for (int i = 0; i < 1500; i++)
+            {
+                Console.WriteLine(i.ToString() + " " + MathExt.Fibonacci((double)i).ToString());
+            }
+            Console.ReadKey();
+
+            for (int i = 0; i < 150; i++)
+            {
+                Console.WriteLine(i.ToString() + " " + MathExt.Fibonacci(i).ToString());
+            }
+            Console.ReadKey();
+
             
         }
     }

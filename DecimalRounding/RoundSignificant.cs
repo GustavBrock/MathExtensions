@@ -2,6 +2,7 @@
 
 namespace DecimalExtensions
 {
+
     public static class RoundingMethods
     {
         public static decimal RoundToSignificantDigits(this Decimal inputValue, int significantDigits)
@@ -41,13 +42,13 @@ namespace DecimalExtensions
             if (inputValue != 0 && significantDigits>0)
             {
                 // Calculate scaling factor.
-                exponent = Math.Floor(Math.Log10((double)Math.Abs(inputValue))) + 1 - significantDigits;
+                exponent = System.Math.Floor(System.Math.Log10((double)System.Math.Abs(inputValue))) + 1 - significantDigits;
                 if (integer == true && exponent < 0)
                 {
                     // No decimals.
                     exponent = 0;
                 }
-                scaling = (decimal)Math.Pow(base10, exponent);
+                scaling = (decimal)System.Math.Pow(base10, exponent);
 
                 if (scaling == 0)
                     // A very large value for significantDigits has minimized scaling.
@@ -70,12 +71,12 @@ namespace DecimalExtensions
                     // Perform rounding.
                     if (mode == MidpointRounding.AwayFromZero)
                     {
-                        half = Math.Sign(inputValue) / 2m;
-                        returnValue = Math.Truncate(scaledValue + half) * scaling;
+                        half = System.Math.Sign(inputValue) / 2m;
+                        returnValue = System.Math.Truncate(scaledValue + half) * scaling;
                     }
                     else
                     {
-                        returnValue = Math.Round(scaledValue, MidpointRounding.ToEven) * scaling;
+                        returnValue = System.Math.Round(scaledValue, MidpointRounding.ToEven) * scaling;
                     }
                 }
             }

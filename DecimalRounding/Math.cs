@@ -110,7 +110,7 @@
                     else
                     // Fill remaining elements by calculation.
                     {
-                        factorialSequence[i] = numbers * factorialSequence[i - 1];
+                        factorialSequence[i] = i * factorialSequence[i - 1];
                     }
                 }
             }

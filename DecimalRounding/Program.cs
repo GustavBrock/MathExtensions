@@ -1,5 +1,5 @@
 ﻿using System;
-using DecimalExtensions;
+//using DecimalExtensions;
 
 
 namespace Test
@@ -52,25 +52,32 @@ namespace Test
             }
             Console.ReadKey();
 
-            //for (int i = 0; i < 200; i++)
+            for (double i = 0; i < 180; i++)
+            {
+                Console.WriteLine(i.ToString() + " " + MathExt.Factorial(i).ToString());
+            }
+            Console.ReadKey();
+
+            for (int i = 0; i < 30; i++)
+            {
+                Console.WriteLine(i.ToString() + " " + MathExt.Factorial(i).ToString());
+            }
+            decimal f = MathExt.Factorial(20);
+            Console.ReadKey();
+
+            //for (int i = 0; i < 1500; i++)
             //{
-            //    Console.WriteLine(i.ToString() + " " + MathExt.Factorial(i).ToString());
+            //    Console.WriteLine(i.ToString() + " " + MathExt.Fibonacci((double)i).ToString());
             //}
             //Console.ReadKey();
 
-            for (int i = 0; i < 1500; i++)
-            {
-                Console.WriteLine(i.ToString() + " " + MathExt.Fibonacci((double)i).ToString());
-            }
-            Console.ReadKey();
+            //for (int i = 0; i < 150; i++)
+            //{
+            //    Console.WriteLine(i.ToString() + " " + MathExt.Fibonacci(i).ToString());
+            //}
+            //Console.ReadKey();
 
-            for (int i = 0; i < 150; i++)
-            {
-                Console.WriteLine(i.ToString() + " " + MathExt.Fibonacci(i).ToString());
-            }
-            Console.ReadKey();
 
-            
         }
     }
 

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DecimalExtensions
+namespace System
 {
 
     public static class RoundingMethods

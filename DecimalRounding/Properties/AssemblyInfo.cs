@@ -5,10 +5,10 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("DecimalRounding")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("MathExt")]
+[assembly: AssemblyDescription("Math Extended Methods")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Cactus Data ApS")]
 [assembly: AssemblyProduct("DecimalRounding")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]

@@ -1,8 +1,8 @@
 ﻿using System;
-//using DecimalExtensions;
+using SystemExt;
 
 
-namespace Test
+namespace MathExtDemo
 {
     class Program
     {
@@ -13,7 +13,7 @@ namespace Test
 
             for (int i = 0; i < 10; i++)
             {
-                decimal roundedValue = value.RoundToSignificantDigits(digits);
+                decimal roundedValue = MathExt.RoundSignificant(value, digits);
                 Console.WriteLine("input value: {0} - Rounded value: {1}", value.ToString(), roundedValue.ToString());
                 value++;
             }
@@ -24,7 +24,7 @@ namespace Test
 
             for (int i = 0; i < 10; i++)
             {
-                decimal roundedValue = value.RoundToSignificantDigits(digits,MidpointRounding.ToEven);
+                decimal roundedValue = MathExt.RoundSignificant(value, digits, MidpointRounding.ToEven);
                 Console.WriteLine("input value: {0} - Rounded value: {1}", value.ToString(), roundedValue.ToString());
                 value++;
             }
@@ -35,7 +35,7 @@ namespace Test
 
             for (int i = 0; i < 10; i++)
             {
-                decimal roundedValue = value.RoundToSignificantDigits(digits);
+                decimal roundedValue = MathExt.RoundSignificant(value, digits);
                 Console.WriteLine("input value: {0} - Rounded value: {1}", value.ToString(), roundedValue.ToString());
                 value++;
             }
@@ -46,7 +46,7 @@ namespace Test
 
             for (int i = 0; i < 10; i++)
             {
-                decimal roundedValue = value.RoundToSignificantDigits(digits, MidpointRounding.ToEven);
+                decimal roundedValue = MathExt.RoundSignificant(value, digits, MidpointRounding.ToEven);
                 Console.WriteLine("input value: {0} - Rounded value: {1}", value.ToString(), roundedValue.ToString());
                 value++;
             }
@@ -76,8 +76,17 @@ namespace Test
             //    Console.WriteLine(i.ToString() + " " + MathExt.Fibonacci(i).ToString());
             //}
             //Console.ReadKey();
+            decimal dest = MathExt.RoundSignificant(decimal.MaxValue, 27, false, MidpointRounding.AwayFromZero);
+            Console.WriteLine(decimal.MaxValue.ToString());
+            Console.WriteLine(dest.ToString());
+            Console.ReadKey();
 
-
+            //double test = MathExt.RoundSignificant(123456789012345678d, 10, false, MidpointRounding.AwayFromZero);
+            //Console.WriteLine(test.ToString());
+            //Console.ReadKey();
+            
+            
+            
         }
     }
 

@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("Math Extended Methods")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Cactus Data ApS")]
-[assembly: AssemblyProduct("DecimalRounding")]
+[assembly: AssemblyProduct("Math Extension")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

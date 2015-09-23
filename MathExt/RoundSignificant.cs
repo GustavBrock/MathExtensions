@@ -4,7 +4,7 @@ namespace SystemExt
 {
 
     /// <summary>
-    /// Provides constants and methods for rounding, generating mathematical sequences, and single values from these.
+    /// Provides constants and methods for rounding, generating mathematical sequences, and to retrieve single values from these.
     /// </summary>
     public static partial class MathExt
     {

@@ -5,7 +5,7 @@
     public enum UpRounding
     {
         Up,
-        ToZero
+        AwayFromZero
     }
 
     public enum DownRounding

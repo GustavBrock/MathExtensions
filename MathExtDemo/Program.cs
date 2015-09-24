@@ -84,9 +84,17 @@ namespace MathExtDemo
             //double test = MathExt.RoundSignificant(123456789012345678d, 10, false, MidpointRounding.AwayFromZero);
             //Console.WriteLine(test.ToString());
             //Console.ReadKey();
-            
-            
-            
+
+            decimal d = 120000000000.345m;
+            Console.WriteLine(MathExt.RoundUp(d, 28, UpRounding.AwayFromZero).ToString());
+            Console.WriteLine(MathExt.RoundUp(d, 28, UpRounding.Up).ToString());
+            Console.WriteLine(MathExt.RoundUp(-d, 28, UpRounding.AwayFromZero).ToString());
+            Console.WriteLine(MathExt.RoundUp(-d, 28, UpRounding.Up).ToString());
+            Console.WriteLine(MathExt.RoundUp(d, -1, UpRounding.AwayFromZero).ToString());
+            Console.WriteLine(MathExt.RoundUp(d, -1, UpRounding.Up).ToString());
+            Console.WriteLine(MathExt.RoundUp(-d, -1, UpRounding.AwayFromZero).ToString());
+            Console.WriteLine(MathExt.RoundUp(-d, -1, UpRounding.Up).ToString());
+            Console.ReadKey();
         }
     }
 

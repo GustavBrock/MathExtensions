@@ -20,11 +20,6 @@ namespace SystemExt
         /// </summary>
         public const int MaxSignificantDigitsDouble = 16;
 
-        /// <summary>
-        /// Represents the base number for calculating scale when rounding to significant numbers.
-        /// </summary>
-        private const double _base10 = 10;
-        
         #endregion
 
         #region RoundSignificant
@@ -87,7 +82,7 @@ namespace SystemExt
                         // No decimals.
                         exponent = 0;
                     }
-                    scaling = (decimal)Math.Pow(_base10, exponent);
+                    scaling = (decimal)Math.Pow(Base10, exponent);
                 }
 
                 if (scaling == 0)
@@ -146,7 +141,7 @@ namespace SystemExt
                         // No decimals.
                         exponent = 0;
                     }
-                    scaling = Math.Pow(_base10, exponent);
+                    scaling = Math.Pow(Base10, exponent);
                 }
 
                 if (scaling == 0)

@@ -55,6 +55,7 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common.cs" />
     <Compile Include="Sequences.cs" />
     <Compile Include="RoundSignificant.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

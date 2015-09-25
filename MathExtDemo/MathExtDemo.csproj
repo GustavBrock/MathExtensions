@@ -44,7 +44,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DecimalRounding\MathExt.csproj">
+    <ProjectReference Include="..\MathExt\MathExt.csproj">
       <Project>{f8a070f2-9094-41ba-81fd-0d31d18cf949}</Project>
       <Name>MathExt</Name>
     </ProjectReference>

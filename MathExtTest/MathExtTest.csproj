@@ -53,6 +53,12 @@
     <Compile Include="UnitTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MathExt\MathExt.csproj">
+      <Project>{f8a070f2-9094-41ba-81fd-0d31d18cf949}</Project>
+      <Name>MathExt</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

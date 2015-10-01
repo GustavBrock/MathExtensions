@@ -104,7 +104,7 @@ namespace SystemExt
             // Only round if result can be different from zero.
             if (value != 0)
             {
-                if (digits !=0 && digits <= MaxSignificantDigitsDecimal)
+                if (digits !=0 && digits <= MaxDigitsDecimal)
                 {
                     // Calculate scaling factor.
                     scaling = (decimal)Math.Pow(Base10, digits);
@@ -202,7 +202,7 @@ namespace SystemExt
             // Only round if result can be different from zero.
             if (value != 0)
             {
-                if (digits != 0 && digits <= MaxSignificantDigitsDouble)
+                if (digits != 0 && digits <= MaxDigitsDouble)
                 {
                     // Calculate scaling factor.
                     scaling = Math.Pow(Base10, digits);
@@ -380,7 +380,7 @@ namespace SystemExt
             // Only round if result can be different from zero.
             if (value != 0)
             {
-                if (digits != 0 && digits <= MaxSignificantDigitsDecimal)
+                if (digits != 0 && digits <= MaxDigitsDecimal)
                 {
                     // Calculate scaling factor.
                     scaling = (decimal)Math.Pow(Base10, digits);
@@ -478,7 +478,7 @@ namespace SystemExt
             // Only round if result can be different from zero.
             if (value != 0)
             {
-                if (digits != 0 && digits <= MaxSignificantDigitsDouble)
+                if (digits != 0 && digits <= MaxDigitsDouble)
                 {
                     // Calculate scaling factor.
                     scaling = Math.Pow(Base10, digits);
@@ -564,6 +564,82 @@ namespace SystemExt
         #region RoundMid
 
         /// <summary>
+        /// Rounds value by 4/5 to an integer.
+        /// </summary>
+        /// <param name="value">Value to be rounded.</param>
+        /// <returns>Value rounded by 4/5.</returns>
+        public static decimal RoundMid(decimal value)
+        {
+            int digits = 0;
+            MidpointRounding mode = MidpointRounding.AwayFromZero;
+            return RoundMid(value, digits, mode);
+        }
+
+        /// <summary>
+        /// Rounds value by 4/5 to an integer.
+        /// </summary>
+        /// <param name="value">Value to be rounded.</param>
+        /// <returns>Value rounded by 4/5.</returns>
+        public static double RoundMid(double value)
+        {
+            int digits = 0;
+            MidpointRounding mode = MidpointRounding.AwayFromZero;
+            return RoundMid(value, digits, mode);
+        }
+
+        /// <summary>
+        /// Rounds value by 4/5 with the count of decimals as specified with parameter digits.
+        /// If digits is negative, value is rounded to tens, hundreds, etc.
+        /// </summary>
+        /// <param name="value">Value to be rounded.</param>
+        /// <param name="digits">Count of decimals. A negative count is allowed.</param>
+        /// <returns>Value rounded by 4/5.</returns>
+        public static decimal RoundMid(decimal value, int digits)
+        {
+            MidpointRounding mode = MidpointRounding.AwayFromZero;
+            return RoundMid(value, digits, mode);
+        }
+
+        /// <summary>
+        /// Rounds value by 4/5 with the count of decimals as specified with parameter digits.
+        /// If digits is negative, value is rounded to tens, hundreds, etc.
+        /// </summary>
+        /// <param name="value">Value to be rounded.</param>
+        /// <param name="digits">Count of decimals. A negative count is allowed.</param>
+        /// <returns>Value rounded by 4/5.</returns>
+        public static double RoundMid(double value, int digits)
+        {
+            MidpointRounding mode = MidpointRounding.AwayFromZero;
+            return RoundMid(value, digits, mode);
+        }
+
+        /// <summary>
+        /// Rounds value by 4/5 to an integer.
+        /// <para>Optionally, performs Banker's Rounding.</para>
+        /// </summary>
+        /// <param name="value">Value to be rounded.</param>
+        /// <param name="mode">Sets rounding mode.</param>
+        /// <returns>Value rounded by 4/5.</returns>
+        public static decimal RoundMid(decimal value, MidpointRounding mode)
+        {
+            int digits = 0;
+            return RoundMid(value, digits, mode);
+        }
+
+        /// <summary>
+        /// Rounds value by 4/5 to an integer.
+        /// <para>Optionally, performs Banker's Rounding.</para>
+        /// </summary>
+        /// <param name="value">Value to be rounded.</param>
+        /// <param name="mode">Sets rounding mode.</param>
+        /// <returns>Value rounded by 4/5.</returns>
+        public static double RoundMid(double value, MidpointRounding mode)
+        {
+            int digits = 0;
+            return RoundMid(value, digits, mode);
+        }
+
+        /// <summary>
         /// Rounds value by 4/5 with the count of decimals as specified with parameter digits.
         /// If digits is negative, value is rounded to tens, hundreds, etc.
         /// <para>Optionally, performs Banker's Rounding.</para>
@@ -580,7 +656,7 @@ namespace SystemExt
             // Only round if result can be different from zero.
             if (value != 0)
             {
-                if (digits != 0 && digits <= MaxSignificantDigitsDouble)
+                if (digits != 0 && digits <= MaxDigitsDecimal)
                 {
                     // Calculate scaling factor.
                     scaling = (decimal)Math.Pow(Base10, digits);
@@ -598,19 +674,19 @@ namespace SystemExt
                     returnValue = value;
                 else if (mode == MidpointRounding.ToEven)
                 {
-                    // Perform Banker's Rounding.
+                    // Perform Banker's Rounding using the default rounding mode of Round.
                     {
                         try
                         {
                             // Round value as a decimal.
-                            returnValue = (double)Math.Round((decimal)(value), digits, mode);
+                            returnValue = Math.Round(value * scaling) / scaling;
                         }
                         catch
                         {
                             try
                             {
                                 // Round value as a double.
-                                returnValue = Math.Round(value * scaling) / scaling;
+                                returnValue = (decimal)(Math.Round((double)value * (double)scaling) / (double)scaling);
                             }
                             catch
                             {
@@ -624,19 +700,18 @@ namespace SystemExt
                 {
                     // Perform basic 4/5 rounding.
                     {
-                        decimal half = 0.5m;
+                        decimal half = (decimal)Math.Sign(value) / 2;
                         try
                         {
                             // Round value as a decimal.
-                            half = Math.Sign((decimal)value) / 2m;
-                            returnValue = (double)(Math.Truncate((decimal)value / (decimal)scaling + half) * (decimal)scaling);
+                            returnValue = Math.Truncate(value * scaling + half) / scaling;
                         }
                         catch
                         {
                             try
                             {
                                 // Round value as a double.
-                                returnValue = Math.Truncate(value * scaling + (double)half) / scaling;
+                                returnValue = (decimal)(Math.Truncate((double)value * (double)scaling + (double)half) / (double)scaling);
                             }
                             catch
                             {
@@ -668,7 +743,7 @@ namespace SystemExt
             // Only round if result can be different from zero.
             if (value != 0)
             {
-                if (digits != 0 && digits <= MaxSignificantDigitsDouble)
+                if (digits != 0 && digits <= MaxDigitsDouble)
                 {
                     // Calculate scaling factor.
                     scaling = Math.Pow(Base10, digits);
@@ -686,12 +761,13 @@ namespace SystemExt
                     returnValue = value;
                 else if (mode == MidpointRounding.ToEven)
                 {
-                    // Perform Banker's Rounding.
+                    // Perform Banker's Rounding using the default rounding mode of Round.
                     {
                         try
                         {
                             // Round value as a decimal.
-                            returnValue = (double)Math.Round((decimal)(value), digits, mode);
+                            //                            returnValue = (double)Math.Round((decimal)(value), digits, mode);
+                            returnValue = (double)(Math.Round((decimal)(value) * (decimal)scaling, mode) / (decimal)scaling);
                         }
                         catch
                         {
@@ -712,19 +788,18 @@ namespace SystemExt
                 {
                     // Perform basic 4/5 rounding.
                     {
-                        decimal half = 0.5m;
+                        double half = (double)Math.Sign(value) / 2;
                         try
                         {
                             // Round value as a decimal.
-                            half = Math.Sign((decimal)value) / 2m;
-                            returnValue = (double)(Math.Truncate((decimal)value / (decimal)scaling + half) * (decimal)scaling);
+                            returnValue = (double)(Math.Truncate((decimal)value * (decimal)scaling + (decimal)half) / (decimal)scaling);
                         }
                         catch
                         {
                             try
                             {
                                 // Round value as a double.
-                                returnValue = Math.Truncate(value * scaling + (double)half) / scaling;
+                                returnValue = Math.Truncate(value * scaling + half) / scaling;
                             }
                             catch
                             {

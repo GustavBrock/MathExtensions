@@ -8,19 +8,6 @@ namespace SystemExt
     /// </summary>
     public static partial class MathExt
     {
-        #region Constants
-
-        /// <summary>
-        /// Represents the maximum possible number of significant figures to round a decimal value to.
-        /// </summary>
-        public const int MaxSignificantDigitsDecimal = 29;
-
-        /// <summary>
-        /// Represents the maximum possible number of significant figures to round a double value to.
-        /// </summary>
-        public const int MaxSignificantDigitsDouble = 16;
-
-        #endregion
 
         #region RoundSignificant
 

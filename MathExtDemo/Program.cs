@@ -9,8 +9,11 @@ namespace MathExtDemo
         {
             Demo demo = new Demo();
             demo.RoundingDemo();
-            demo.FactorialDemo();
-            demo.FibonacciDemo();
+          //  demo.FactorialDemo();
+          //  demo.FibonacciDemo();
+
+            Console.WriteLine(MathExt.Mantissa(0.01234000m));
+            Console.ReadKey();
         }
     }
 
